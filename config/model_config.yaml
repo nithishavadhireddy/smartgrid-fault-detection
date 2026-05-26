@@ -1,0 +1,41 @@
+data:
+  raw_path: "data/raw/grid_telemetry.csv"
+  processed_path: "data/processed/"
+  test_size: 0.2
+  random_state: 42
+  target_col: "fault_label"
+
+preprocessing:
+  handle_outliers: true
+  outlier_method: "iqr"
+  outlier_threshold: 1.5
+  scale_features: true
+  scaler: "standard"
+
+feature_engineering:
+  rolling_windows: [3, 5, 10]
+  lag_features: [1, 2, 3]
+  drop_correlated_threshold: 0.95
+
+xgboost:
+  n_estimators: 300
+  max_depth: 6
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  min_child_weight: 3
+  use_label_encoder: false
+  eval_metric: "logloss"
+  early_stopping_rounds: 20
+
+dnn:
+  hidden_layers: [128, 64, 32]
+  dropout_rate: 0.3
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 100
+  patience: 15
+
+output:
+  model_dir: "models/saved"
+  reports_dir: "reports"
