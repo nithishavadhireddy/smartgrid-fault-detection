@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.DS_Store
+data/raw/
+data/processed/
+models/saved/
+*.h5
+*.pkl
+*.joblib
+mlruns/
